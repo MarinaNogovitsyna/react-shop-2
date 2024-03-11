@@ -7,6 +7,8 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v4
+        with:
+          ref: main
       - name: Print context
         run: echo "@{{toJSON(github)}}"
       - name: Install dependencies
