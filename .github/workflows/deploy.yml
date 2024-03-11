@@ -12,7 +12,7 @@ jobs:
       - name: Print context
         run: echo "@{{toJSON(github)}}"
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Remove old builds
         run: rm -rf build.zip build || true
       - name: Build project
