@@ -1,34 +1,27 @@
-name: Build and Archive App
+name: Frontend Build
 
-on:
-  workflow_dispatch:
+on: workflow_dispatch
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
-    - name: Set up Node.js
+    
+    - name: Install Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '16'
-
+        node-version: '14'
+    
     - name: Install dependencies
       run: npm install
-
-    - name: Build app
+    
+    - name: Build frontend
       run: npm run build
-
-    - name: Archive app
-      uses: montudor/action-zip@v0.1.0
-      with:
-        args: zip -r app.zip build
-
-    - name: Upload artifact
+    
+    - name: Archive build folder
       uses: actions/upload-artifact@v2
       with:
-        name: app
-        path: app.zip
+        name: frontend-build
+        path: build
